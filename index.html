@@ -979,6 +979,8 @@
               <option value="1 Day">1 Day</option>
               <option value="4 Hour">4 Hour</option>
               <option value="1 Hour" selected>1 Hour</option>
+              <option value="30 Minute">30 Minute</option>
+              <option value="15 Minute">15 Minute</option>
             </select>
           </div>
 
@@ -1128,8 +1130,8 @@
                 <option value="date_desc">Date: Newest to Oldest</option>
               </optgroup>
               <optgroup label="Timeframe">
-                <option value="tf_desc">Timeframe: 1 Month → 1 Hour</option>
-                <option value="tf_asc">Timeframe: 1 Hour → 1 Month</option>
+                <option value="tf_desc">Timeframe: 1 Month → 15 Minute</option>
+                <option value="tf_asc">Timeframe: 15 Minute → 1 Month</option>
               </optgroup>
             </select>
 
@@ -1162,6 +1164,8 @@
             <option value="1 Day">1 Day</option>
             <option value="4 Hour">4 Hour</option>
             <option value="1 Hour">1 Hour</option>
+            <option value="30 Minute">30 Minute</option>
+            <option value="15 Minute">15 Minute</option>
           </select>
 
           <select id="filterTPTarget" aria-label="Filter by TP target" class="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 focus:outline-none">
@@ -1501,7 +1505,7 @@
       }
 
       const TP_OPTIONS = ['CRT 50%', 'CRT 100%', 'CRT TP1', 'CRT TP2', 'STDV'];
-      const TF_OPTIONS = ['1 Month', '1 Week', '1 Day', '4 Hour', '1 Hour'];
+      const TF_OPTIONS = ['1 Month', '1 Week', '1 Day', '4 Hour', '1 Hour', '30 Minute', '15 Minute'];
       const HIGHER_TF_TBD = ['1 Month', '1 Week', '1 Day'];
 
       // Map legacy / alternate timeframe labels onto the supported set
@@ -1513,7 +1517,8 @@
           '1day': '1 Day', 'daily': '1 Day', 'day': '1 Day', '1d': '1 Day', 'd': '1 Day',
           '4hour': '4 Hour', '4hours': '4 Hour', '4h': '4 Hour', '4hr': '4 Hour',
           '1hour': '1 Hour', '1hours': '1 Hour', '1h': '1 Hour', '1hr': '1 Hour', 'hourly': '1 Hour',
-          '15min': '1 Hour', '30min': '1 Hour'
+          '30minute': '30 Minute', '30minutes': '30 Minute', '30min': '30 Minute', '30mins': '30 Minute', '30m': '30 Minute', 'm30': '30 Minute',
+          '15minute': '15 Minute', '15minutes': '15 Minute', '15min': '15 Minute', '15mins': '15 Minute', '15m': '15 Minute', 'm15': '15 Minute'
         };
         return map[x] || '1 Hour';
       }
@@ -2850,7 +2855,7 @@
         }
       }
 
-      const TF_RANK = { '1 Month': 5, '1 Week': 4, '1 Day': 3, '4 Hour': 2, '1 Hour': 1 };
+      const TF_RANK = { '1 Month': 7, '1 Week': 6, '1 Day': 5, '4 Hour': 4, '1 Hour': 3, '30 Minute': 2, '15 Minute': 1 };
 
       function getJournalDateBounds() {
         const presetEl = document.getElementById('filterDatePreset');
